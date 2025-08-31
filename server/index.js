@@ -1,14 +1,17 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import router from './Router/route.js';
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 7000;
+const MONGOURL = process.env.MONGO_URL;
 
 
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/Notes-app')
+mongoose.connect(MONGOURL)
         .then(() => {console.log('Connected to MongoDB');})
         .catch((err) => {console.error('Failed to connect to MongoDB', err)});
     
