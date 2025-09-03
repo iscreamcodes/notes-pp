@@ -18,31 +18,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["member", "librarian", "admin"],
+    enum: ["member", "admin"],
     default: "member"
-  },
-  borrowedBooks: [
-    {
-      book: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Book"        // Reference to the Book model
-      },
-      borrowedDate: {
-        type: Date,
-        default: Date.now
-      },
-      dueDate: {
-        type: Date
-      },
-      returned: {
-        type: Boolean,
-        default: false
-      }
-    }
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 });
 
